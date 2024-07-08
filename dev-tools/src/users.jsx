@@ -1,70 +1,28 @@
-import { useMediaQuery, Chip, Card, CardContent  } from "@mui/material";
-import {
- List, 
-SimpleList, 
-Datagrid, 
-TextField, 
-EmailField, 
-TextInput, 
-SearchInput, 
-useTranslate, 
-SavedQueriesList, 
-FilterLiveSearch, 
-FilterList, 
-FilterListItem,
-    BooleanField,
-    CreateButton,
-    NumberField,
-    ReferenceArrayField,
-    TopToolbar,
+import { 
+    List, 
+    SimpleList,
+    WithListContext,
+    useListContext,
+    Datagrid, 
+    TextField, 
+    EmailField,
+    ReferenceField,
+    EditButton,
+    Edit,
+    Create,
+    SimpleForm,
+    ReferenceInput,
+    TextInput,
 } from "react-admin";
+
+import { Stack, Typography } from "@mui/material";
+
 import MyUrlField from './MyUrlField';
-import MailIcon from '@mui/icons-material/MailOutline';
-import CategoryIcon from '@mui/icons-material/LocalOffer'
 
-
-
-const QuickFilter = ({ label }) => {
-    const translate = useTranslate();
-    return <Chip sx={{ marginBottom: 1 }} label={translate(label)} />;
-};
-
-const postFilters1 = [
-    <TextInput label="Search" source="q" alwaysOn />,
-    <TextInput label="Company Name" source="company.name" defaultValue="Hello, World!" />,
-];
-const postFilters2 = [
-    <SearchInput source="q" alwaysOn />
-];
-
-const postFilters3 = [
-    <SearchInput source="q" alwaysOn />,
-    <QuickFilter source="name" label="Names" defaultValue={""} />,
-    <QuickFilter source="email" label="Emails" defaultValue={""} />,
-    <QuickFilter source="phone" label="Phone Numbers" defaultValue={""} />,
-];
-
-const PostFilterSidebar = () => (
-    <Card sx={{ order: -1, mr: 2, mt: 9, width: 200 }}>
-        <CardContent>
-            <SavedQueriesList />
-            <FilterLiveSearch />
-            <FilterList label="Subscribed to newsletter" icon={<MailIcon />}>
-                <FilterListItem label="test" value={{ ["company.name"]: 'Romaguera' }} />
-            </FilterList>
-            <FilterList label="Category" icon={<CategoryIcon />}>
-                <FilterListItem label="Tests" value={{ category: 'tests' }} />
-                <FilterListItem label="News" value={{ category: 'news' }} />
-                <FilterListItem label="Deals" value={{ category: 'deals' }} />
-                <FilterListItem label="Tutorials" value={{ category: 'tutorials' }} />
-            </FilterList>
-        </CardContent>
-    </Card>
-);
 
 export const UserList = () => (
     <div>
-        <List filters={postFilters1}>
+        <List>
             <Datagrid rowClick="show">
                 <TextField source="id" />
                 <TextField source="name" />
@@ -72,47 +30,78 @@ export const UserList = () => (
                 <TextField source="phone" />
                 <MyUrlField source="website" />
                 <TextField source="company.name" />
-            </Datagrid>
-        </List>
-        <List filters = {postFilters2}>
-            <Datagrid rowClick="show">
-                <TextField source="id" />
-                <TextField source="name" />
-                <EmailField source="email" />
-                <TextField source="phone" />
-                <MyUrlField source="website" />
-                <TextField source="company.name" />
-            </Datagrid>
-        </List>
-        <List filters = {postFilters3}>
-            <Datagrid rowClick="show">
-                <TextField source="id" />
-                <TextField source="name" />
-                <EmailField source="email" />
-                <TextField source="phone" />
-                <MyUrlField source="website" />
-                <TextField source="company.name" />
-            </Datagrid>
-        </List>
-        <List aside={<PostFilterSidebar />}>
-            <Datagrid rowClick="show">
-                <TextField source="id" />
-                <TextField source="name" />
-                <EmailField source="email" />
-                <TextField source="phone" />
-                <MyUrlField source="website" />
-                <TextField source="company.name" />
-            </Datagrid>
-        </List>
-        <List filters={postFilters1}>
-            <Datagrid rowClick="show">
-                <TextField source="id" />
-                <TextField source="name" />
-                <EmailField source="email" />
-                <TextField source="phone" />
-                <MyUrlField source="website" />
-                <TextField source="company.name" />
+                <EditButton />
             </Datagrid>
         </List>
     </div>
+)
+
+export const SimpleUserList = () => (
+    <div>
+        <List>
+            <SimpleList
+                primaryText={(record) => record.name}
+                secondaryText={(record) => record.email}
+                tertiaryText={(record) => record.website}
+            />
+        </List>
+    </div>
+)
+
+export const WithListContextUserList = () => (
+    <div>
+    <List emptyWhileLoading>
+        <WithListContext
+            render={({ data }) => (
+                <Stack spacing={2} sx={{ padding: 2 }}>
+                    {data.map((user) => (
+                        <Typography key={user.id}>
+                            <i>{user.name}</i> can be contacted at <i>{user.email}</i> or with <i>{user.phone}</i>
+                        </Typography>
+                    ))}
+                </Stack>
+            )}
+        />
+    </List>
+    </div>
+)
+
+const UserListView = () => {
+    const { data } = useListContext();
+    return (
+        <Stack spacing={2} sx={{ padding: 2 }}>
+            {data.map((user) => (
+                <Typography key={user.id}>
+                    <i>{user.name}</i> can be contacted at <i>{user.email}</i> or with <i>{user.phone}</i>
+                </Typography>
+            ))}
+        </Stack>
+    );
+};
+
+export const UseListContextUserList = () => (
+    <List emptyWhileLoading>
+        <UserListView />
+    </List>
 );
+
+export const UserEdit = () => (
+   <Edit>
+      <SimpleForm>
+         <TextInput source="id" InputProps={{ disabled: true }} />
+         <ReferenceInput source="userId" reference="users"/>
+         <TextInput source="title"/>
+         <TextInput source="body" multiline rows={5}/>
+      </SimpleForm>
+   </Edit>
+)
+
+export const UserCreate = () => (
+   <Create>
+      <SimpleForm>
+         <ReferenceInput source="userId" reference = "users"/>
+         < TextInput source = "title" />
+         < TextInput source = "body" multiline rows = {5}/>
+      </SimpleForm>
+   </Create>
+)

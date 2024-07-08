@@ -1,23 +1,30 @@
-import { Admin, Resource, ShowGuesser } from "react-admin";
-import { dataProvider } from './dataProvider';
-// import { PostList, PostEdit, PostCreate } from "./posts";
-// import { CommentsList, CommentsEdit, CommentsCreate } from "./comments";
-// import { TodosList, TodosEdit, TodosCreate } from "./todos";
-// import { PhotosList, PhotosEdit, PhotosCreate } from "./photos";
-// import { AlbumsList, AlbumsEdit, AlbumsCreate } from "./albums";
-import { UserList } from "./users";
+import { Admin, Resource, ShowGuesser, EditGuesser, List, Datagrid, TextField, EmailField } from "react-admin";
+import { dataProvider } from "./dataProvider";
 
+import PostIcon from "@mui/icons-material/Book";
+import UserIcon from "@mui/icons-material/Group";
+
+import { UserList, UserEdit, UserCreate, SimpleUserList, WithListContextUserList, UseListContextUserList } from "./users";
+import { PostList,PostEdit,PostCreate} from "./posts";
+
+import { Dashboard } from "./Dashboard";
 export const App = () => (
-    <Admin dataProvider={dataProvider}>
-{/*        <Resource name="posts"
+    <Admin 
+      dataProvider={dataProvider}
+      dashboard={Dashboard}
+      >
+{/*        <Resource 
+          name="posts"
+          icon={PostIcon}
           list={PostList}
           edit={PostEdit}
-          show={ShowGuesser}
           create={PostCreate}
           show={ShowGuesser}
-        />
-        <Resource name="comments"
-          list={CommentsList}
+          recordRepresentation={(record) => `${record.name}`}
+
+        />*/}
+{/*        <Resource name="comments"
+          //list={CommentsList}
           // edit={CommentsEdit}
           // show={ShowGuesser}
           // create={CommentsCreate}
@@ -40,11 +47,50 @@ export const App = () => (
           // show={ShowGuesser}
           // create={TodosCreate}
         />*/}
+
+
+
+
+
         <Resource
           name="users"
+          icon={UserIcon}
           list={UserList}
+          edit={UserEdit}
+          create={UserCreate}
           show={ShowGuesser}
           recordRepresentation={(record) => `${record.name}`}
         />
+
+{/*        <Resource
+          name="users"
+          icon={UserIcon}
+          list={SimpleUserList}
+          edit={UserEdit}
+          create={UserCreate}
+          show={ShowGuesser}
+          recordRepresentation={(record) => `${record.name}`}
+        />*/}
+
+{/*        <Resource
+          name="users"
+          icon={UserIcon}
+          list={WithListContextUserList}
+          edit={UserEdit}
+          create={UserCreate}
+          show={ShowGuesser}
+          recordRepresentation={(record) => `${record.name}`}
+        />*/}
+
+{/*        <Resource
+          name="users"
+          icon={UserIcon}
+          list={UseListContextUserList}
+          edit={UserEdit}
+          create={UserCreate}
+          show={ShowGuesser}
+          recordRepresentation={(record) => `${record.name}`}
+        />*/}
+
     </Admin>
 );
