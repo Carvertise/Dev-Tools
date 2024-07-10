@@ -33,6 +33,17 @@ import PersonPinIcon from '@mui/icons-material/PersonPin';
 import MailIcon from '@mui/icons-material/MailOutline';
 import CategoryIcon from '@mui/icons-material/LocalOffer';
 
+import { SimpleTreeView } from '@mui/x-tree-view/SimpleTreeView';
+import { TreeItem } from '@mui/x-tree-view/TreeItem';
+
+
+import { CheckTree } from 'rsuite';
+
+
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+// import { mockTreeData } from './mock';
 
 // LIST COMPONANTS 
 export const UserList = () => (
@@ -129,8 +140,10 @@ export const UserShowStarIds = () => (
     </Show>
 );
 
+
 export const UserShowWithIdStars = () => (
     <Show>
+    
         <SimpleShowLayout>
             <TextField label="Title" source="name" />
             <TextField label="Email" source="email" />
@@ -139,7 +152,7 @@ export const UserShowWithIdStars = () => (
             </>} />
         </SimpleShowLayout>
     </Show>
-);
+)
 
 export const UserShowSimpleShowLayout = () => (
     <Show>
@@ -183,10 +196,72 @@ export const UserEdit = () => (
          <ReferenceInput source="userId" reference="users"/>
          <TextInput source="title"/>
          <TextInput source="body" multiline rows={5}/>
+                 <SimpleTreeView>
+            <TreeItem itemId="grid-pro1" label="Address" >
+                <TreeItem itemId="test1" label={<TextField label="Title" source="address.street" />}/>
+                    <FormGroup>
+      <FormControlLabel control={<Checkbox defaultChecked />} label="Label" />
+      <FormControlLabel required control={<Checkbox />} label="Required" />
+                  <TreeItem itemId="grid-pro21" label="Company" >
+                <TreeItem itemId="test71" label={<TextField label="Title" source="company.name" />}/>
+                <TreeItem itemId="test81" label={<TextField label="Title" source="company.catchPhrase" />}/>
+                <TreeItem itemId="test91" label={<TextField label="Title" source="company.bs" />}/>
+            </TreeItem>
+      <FormControlLabel disabled control={<Checkbox />} label="Disabled" />
+    </FormGroup>
+                <TreeItem itemId="test2" label={<TextField label="Title" source="address.suite" />}/>
+                <TreeItem itemId="test3" label={<TextField label="Title" source="address.city" />}/>
+                <TreeItem itemId="test4" label='geo'>
+                    <TreeItem itemId="test5" label={<TextField label="Title" source="address.geo.lat" />}/>
+                    <TreeItem itemId="test6" label={<TextField label="Title" source="address.geo.lng" />}/>
+                </TreeItem>
+            </TreeItem>
+            <TreeItem itemId="grid-pro2" label="Company" >
+                <TreeItem itemId="test7" label={<TextField label="Title" source="company.name" />}/>
+                <TreeItem itemId="test8" label={<TextField label="Title" source="company.catchPhrase" />}/>
+                <TreeItem itemId="test9" label={<TextField label="Title" source="company.bs" />}/>
+            </TreeItem>
+      </SimpleTreeView>
       </SimpleForm>
    </Edit>
 )
 
+export const UserEdit2 = () => (
+   <Edit>
+      <SimpleForm>
+         <TextInput source="id" InputProps={{ disabled: true }} />
+         <ReferenceInput source="userId" reference="users"/>
+         <TextInput source="title"/>
+         <TextInput source="body" multiline rows={5}/>
+                 <SimpleTreeView>
+            <TreeItem itemId="grid-pro1" label="Address" >
+                <TreeItem itemId="test1" label={<TextField label="Title" source="address.street" />}/>
+                    <FormGroup>
+      <FormControlLabel control={<Checkbox defaultChecked />} label="Label" />
+      <FormControlLabel required control={<Checkbox />} label="Required" />
+                  <TreeItem itemId="grid-pro21" label="Company" >
+                <TreeItem itemId="test71" label={<TextField label="Title" source="company.name" />}/>
+                <TreeItem itemId="test81" label={<TextField label="Title" source="company.catchPhrase" />}/>
+                <TreeItem itemId="test91" label={<TextField label="Title" source="company.bs" />}/>
+            </TreeItem>
+      <FormControlLabel disabled control={<Checkbox />} label="Disabled" />
+    </FormGroup>
+                <TreeItem itemId="test2" label={<TextField label="Title" source="address.suite" />}/>
+                <TreeItem itemId="test3" label={<TextField label="Title" source="address.city" />}/>
+                <TreeItem itemId="test4" label='geo'>
+                    <TreeItem itemId="test5" label={<TextField label="Title" source="address.geo.lat" />}/>
+                    <TreeItem itemId="test6" label={<TextField label="Title" source="address.geo.lng" />}/>
+                </TreeItem>
+            </TreeItem>
+            <TreeItem itemId="grid-pro2" label="Company" >
+                <TreeItem itemId="test7" label={<TextField label="Title" source="company.name" />}/>
+                <TreeItem itemId="test8" label={<TextField label="Title" source="company.catchPhrase" />}/>
+                <TreeItem itemId="test9" label={<TextField label="Title" source="company.bs" />}/>
+            </TreeItem>
+      </SimpleTreeView>
+      </SimpleForm>
+   </Edit>
+)
 
 //CREATE COMPONANTS
 export const UserCreate = () => (
