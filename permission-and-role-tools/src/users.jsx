@@ -45,6 +45,7 @@ export const UserList = () => (
                 <TextField source="phone" />
                 <MyUrlField source="website" />
                 <TextField source="company.name" />
+                <TextField source = "address" />
                 <EditButton />
             </Datagrid>
         </List>

@@ -4,8 +4,8 @@ import { dataProvider } from "./dataProvider";
 import PostIcon from "@mui/icons-material/Book";
 import UserIcon from "@mui/icons-material/Group";
 
-import { UserList, UserEdit, UserCreate, SimpleUserList, WithListContextUserList, UseListContextUserList } from "./users";
-import { PostList,PostEdit,PostCreate} from "./posts";
+import { UserList, UserEdit, UserCreate, SimpleUserList, WithListContextUserList, UseListContextUserList, UserShow, UserShowStarIds, UserShowWithIdStars, UserShowSimpleShowLayout, UserShowGrid } from "./users";
+import { PostList,PostEdit,PostCreate, PostsShowGrid, PostListFilterSidebar, PostListFilter} from "./posts";
 
 import { Dashboard } from "./Dashboard";
 export const App = () => (
@@ -13,16 +13,7 @@ export const App = () => (
       dataProvider={dataProvider}
       dashboard={Dashboard}
       >
-{/*        <Resource 
-          name="posts"
-          icon={PostIcon}
-          list={PostList}
-          edit={PostEdit}
-          create={PostCreate}
-          show={ShowGuesser}
-          recordRepresentation={(record) => `${record.name}`}
 
-        />*/}
 {/*        <Resource name="comments"
           //list={CommentsList}
           // edit={CommentsEdit}
@@ -48,21 +39,55 @@ export const App = () => (
           // create={TodosCreate}
         />*/}
 
+{/*LIST:POSTLIST
+SHOW:SHOWGUESSER*/}
+{/*        <Resource 
+          name="posts"
+          icon={PostIcon}
+          list={PostList}
+          edit={PostEdit}
+          create={PostCreate}
+          show={ShowGuesser}
+          recordRepresentation={(record) => `${record.name}`}
+
+        />*/}
 
 
-
-
+{/*LIST:UserList
+SHOW:UserShow
         <Resource
           name="users"
           icon={UserIcon}
           list={UserList}
           edit={UserEdit}
+          show={UserShow}
           create={UserCreate}
-          show={ShowGuesser}
           recordRepresentation={(record) => `${record.name}`}
-        />
+        />*/}
+
+{/*DOESNT WORK*/}
+{/*        <Resource
+          name="users"
+          icon={UserIcon}
+          list={UserList}
+          edit={UserEdit}
+          show={UserShowStarIds}
+          create={UserCreate}
+          recordRepresentation={(record) => `${record.name}`}
+        />*/}
 
 {/*        <Resource
+          name="users"
+          icon={UserIcon}
+          list={UserList}
+          edit={UserEdit}
+          show={ShowGuesser}
+          create={UserCreate}
+          recordRepresentation={(record) => `${record.name}`}
+        />*/}
+
+{/*FOR PHONE APPS
+        <Resource
           name="users"
           icon={UserIcon}
           list={SimpleUserList}
@@ -72,7 +97,8 @@ export const App = () => (
           recordRepresentation={(record) => `${record.name}`}
         />*/}
 
-{/*        <Resource
+{/*FORMAT EACH RECORD INTO A COMPONANT(EX:A SENTENCE)
+        <Resource
           name="users"
           icon={UserIcon}
           list={WithListContextUserList}
@@ -82,15 +108,60 @@ export const App = () => (
           recordRepresentation={(record) => `${record.name}`}
         />*/}
 
-{/*        <Resource
+
+     <Resource
           name="users"
           icon={UserIcon}
-          list={UseListContextUserList}
+          list={UserList}
           edit={UserEdit}
+          show={UserShowWithIdStars}
           create={UserCreate}
-          show={ShowGuesser}
+          recordRepresentation={(record) => `${record.name}`}
+        />
+
+{/*     <Resource
+          name="users"
+          icon={UserIcon}
+          list={UserList}
+          edit={UserEdit}
+          show={UserShowGrid}
+          create={UserCreate}
           recordRepresentation={(record) => `${record.name}`}
         />*/}
 
+
+{/*DOESNT WORK*/}
+{/*     <Resource
+          name="users"
+          icon={UserIcon}
+          list={UserList}
+          edit={UserEdit}
+          show={UserShowSimpleShowLayout}
+          create={UserCreate}
+          recordRepresentation={(record) => `${record.name}`}
+        />*/}
+
+{/*     <Resource
+          name="posts"
+          icon={PostIcon}
+          list={PostListFilterSidebar}
+          edit={PostEdit}
+          show={PostsShowGrid}
+          create={PostCreate}
+          recordRepresentation={(record) => `${record.title}`}
+        />*/}
+
+     <Resource
+          name="posts"
+          icon={PostIcon}
+          list={PostListFilter}
+          edit={PostEdit}
+          show={PostsShowGrid}
+          create={PostCreate}
+          recordRepresentation={(record) => `${record.title}`}
+        />
+
     </Admin>
 );
+
+PostListFilter
