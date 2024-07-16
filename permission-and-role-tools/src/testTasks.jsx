@@ -69,12 +69,14 @@ export const TaskEdit = () => {
     return(
     <Edit>
         <TabbedShowLayout variant="scrollable" scrollButtons="auto">         
-            <TabbedShowLayout.Tab label="Main">
+            <TabbedShowLayout.Tab label="Car Details">
+            <SimpleForm>
                 <TextField label='_id.$oid' source="_id.$oid" />
                 <TextField source="created.$date" />
                 <TextField source="modified.$date" />
                 <TextField source="_docVersion" />
-            </TabbedShowLayout.Tab>
+                </SimpleForm>
+            </TabbedShowLayout.Tab> 
         </TabbedShowLayout>
     </Edit>
     )
