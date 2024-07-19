@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader } from "@mui/material";
 
-export const Dashboard = () => (
+export const HomePage = () => (
     <Card>
         <CardHeader title="Welcome" />
     </Card>

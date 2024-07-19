@@ -16,7 +16,6 @@ import Checkbox from '@mui/material/Checkbox';
 
 import { Primary } from './showComponents/primary'
 import { Other } from './showComponents/other'
-import { Dashboard } from './showComponents/dashboard'
 
 
 const TaskShow = () => {

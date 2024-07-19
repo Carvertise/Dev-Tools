@@ -8,16 +8,18 @@ import UserIcon from "@mui/icons-material/Group";
 import { UserList ,UserShow, UserEdit, UserCreate } from "./components/testUserComponents/testUsers";
 import { TaskList, TaskShow, TaskEdit, TaskCreate } from "./components/testTaskComponents/testTasks";
 
-import { Dashboard } from "./components/dashboardComponents/dashboard";
+import { HomePage } from "./components/homePageComponents/homePage";
 
 
 
 export const App = () => (
   <Admin 
+//Data provider is refrencing data stored in /data 
     dataProvider={localDataProvider}
-    dashboard={Dashboard}
+//Provides a Home Page/ Opening dashboard(no metrics and charts)
+    dashboard={HomePage}
   >
-
+{/*for the users collection*/}
     <Resource
       name="users"
       list={UserList}
@@ -25,7 +27,7 @@ export const App = () => (
       edit={UserEdit}
       create={UserCreate}
     />
-
+{/*for the tasks collection*/}
     <Resource
       name="tasks"
       list={TaskList}
