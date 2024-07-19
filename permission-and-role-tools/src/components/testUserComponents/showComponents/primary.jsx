@@ -8,10 +8,10 @@ import {
     WithRecord,
 } from "react-admin";
 
-export const Main = () => {
+export const Primary = () => {
     return (
              <TabbedShowLayout.Tab label="Main">
-                 <TextField label='_id.$oid' source="_id.$oid" sx={{ fontSize: '15px', fontWeight: 'bold' }} />
+                 <TextField source="_id.$oid" sx={{ fontSize: '15px', fontWeight: 'bold' }} />
                  <TextField source="value" sx={{ fontSize: '15px', fontWeight: 'bold' }} />
                  <TextField source="phone" sx={{ fontSize: '15px', fontWeight: 'bold' }} />
                  <TextField source="role" sx={{ fontSize: '15px', fontWeight: 'bold' }} />

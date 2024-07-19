@@ -11,7 +11,6 @@ import Checkbox from '@mui/material/Checkbox';
 
 export const Permissions = () => {
     return (
-             <TabbedShowLayout.Tab label="Car Details">
                  <SimpleTreeView>
                          <TreeItem itemId="1" label="Create" >
                              <FormGroup>
@@ -134,7 +133,6 @@ export const Permissions = () => {
                              </TreeItem>
                          </TreeItem>
                  </SimpleTreeView>
-             </TabbedShowLayout.Tab>  
     )
 }
             
