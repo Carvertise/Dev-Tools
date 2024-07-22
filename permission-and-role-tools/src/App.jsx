@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Admin, Resource, ShowGuesser, EditGuesser, List, Datagrid, TextField, EmailField, Layout  } from "react-admin";
+import { BrowserRouter,Routes,Route} from 'react-router-dom'
 import { localDataProvider } from "./dataProviders/fakeDataProvider";
 
 import PostIcon from "@mui/icons-material/Book";

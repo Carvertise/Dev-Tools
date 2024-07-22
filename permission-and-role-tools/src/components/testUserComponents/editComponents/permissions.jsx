@@ -6,15 +6,31 @@ import { TreeItem } from '@mui/x-tree-view/TreeItem';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import { RadioButtonGroupInput } from 'react-admin';
 
-const dataOne = {
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+
+
+import {TEMPLATES} from './permissionTemplates'
+
+const admin = []
+const employee = []
+const service = []
+const MtService = []
+const driver = []
+
+
+let dataOne = {
     Create:{
         'data_users.${user._id}':{
             location:{
                 rough:true,
-                address:false,
+                address:true,
                 city:true,
-                state:false,
+                state:true,
                 zipcode:true,
             },
             'ids_arr':{
@@ -26,7 +42,7 @@ const dataOne = {
         'data_users.${user._id}':{
             location:{
                 rough:true,
-                address:false,
+                address:true,
                 city:true,
                 state:false,
                 zipcode:true,
@@ -66,6 +82,10 @@ const dataOne = {
     },
 
 }
+
+// const [permissions,setPermissions] = useState(dataOne)
+
+
 
 
 const transform = (data, parent) =>  {
@@ -139,8 +159,23 @@ const findNode = (nodes, label, ancestors) => {
 }
 
 const NestedCheckbox = ({ data }) => {
+    const [value, setValue] = React.useState('admin');
+    const [template,setTemplate] = useState(dataOne)
+    //console.log(TEMPLATES[value])
+
+
+    const handleChange = (event) => {
+    if(value=="admin"){
+        console.log(template)
+        setTemplate(TEMPLATES[value])
+    }
+        console.log(template)
+        setValue(event.target.value);
+
+    };
     const initialNodes = transform(data);
     const [ nodes, setNodes ] = useState(initialNodes);
+    //console.log(nodes)
 
     const handleBoxChecked = (e, ancestors) => {
         const checked = e.currentTarget.checked;
@@ -154,7 +189,26 @@ const NestedCheckbox = ({ data }) => {
     }
 
     return (
-        <NestedCheckboxHelper nodes={nodes}  ancestors={[]} onBoxChecked={handleBoxChecked}/>
+        <div>
+            <FormControl>
+              <FormLabel id="demo-controlled-radio-buttons-group">Template</FormLabel>
+              <RadioGroup
+                aria-labelledby="demo-controlled-radio-buttons-group"
+                name="controlled-radio-buttons-group"
+                value={value}
+                onChange={handleChange}
+                row
+              >
+                <FormControlLabel value="admin" control={<Radio />} label="Admin" />
+                <FormControlLabel value="employee" control={<Radio />} label="Employee" />
+                <FormControlLabel value="service" control={<Radio />} label="Service" />
+                <FormControlLabel value="mtService" control={<Radio />} label="MT-Service" />
+                <FormControlLabel value="driver" control={<Radio />} label="Driver" />
+                <FormControlLabel value="custom" control={<Radio />} label="Custom" />
+              </RadioGroup>
+            </FormControl>
+            <NestedCheckboxHelper nodes={nodes}  ancestors={[]} onBoxChecked={handleBoxChecked}/>
+        </div>
     );
 }
 
@@ -185,8 +239,12 @@ const NestedCheckboxHelper = ({ nodes, ancestors, onBoxChecked }) => {
     )
 }
 
+
+
 export function Permissions(props) {
   return (
-    <NestedCheckbox data={dataOne} ancestors={[]}/>
+    <div>
+        <NestedCheckbox data={dataOne} ancestors={[]}/>
+    </div>
   );
 }

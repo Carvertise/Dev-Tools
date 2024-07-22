@@ -17,10 +17,8 @@ import { Permissions } from './editComponents/Permissions'
 
 export const UserEditSource = () => (
     <Edit>
-        <TabbedShowLayout>
-            <TabbedShowLayout.Tab label='Primary'>
-                <Primary/>
-            </TabbedShowLayout.Tab>     
+        <Primary/>
+        <TabbedShowLayout>     
             <TabbedShowLayout.Tab label='Car Details'>
                 <CarDetails/>
             </TabbedShowLayout.Tab>     
