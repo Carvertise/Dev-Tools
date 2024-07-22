@@ -165,12 +165,34 @@ const NestedCheckbox = ({ data }) => {
 
 
     const handleChange = (event) => {
-    if(value=="admin"){
+    if(value=="driver"){
+        console.log(event.target.value)
         console.log(template)
-        setTemplate(TEMPLATES[value])
+        setTemplate(TEMPLATES[event.target.value])
     }
+    if(value=="employee"){
+        console.log(event.target.value)
         console.log(template)
-        setValue(event.target.value);
+        setTemplate(TEMPLATES[event.target.value])
+    }
+    if(value=="admin"){
+        console.log(event.target.value)
+        console.log(template)
+        setTemplate(TEMPLATES[event.target.value])
+    }
+    if(value=="service"){
+        console.log(event.target.value)
+        console.log(template)
+        setTemplate(TEMPLATES[event.target.value])
+    }
+    if(value=="mt-service"){
+        console.log(event.target.value)
+        console.log(template)
+        setTemplate(TEMPLATES[event.target.value])
+    }
+        console.log(event.target.value)
+        console.log(template)
+        setValue(event.target.event.target.value);
 
     };
     const initialNodes = transform(data);
