@@ -16,11 +16,7 @@ import FormLabel from '@mui/material/FormLabel';
 
 import {TEMPLATES} from './permissionTemplates'
 
-const admin = []
-const employee = []
-const service = []
-const MtService = []
-const driver = []
+
 
 
 let dataOne = {
@@ -161,43 +157,41 @@ const findNode = (nodes, label, ancestors) => {
 const NestedCheckbox = ({ data }) => {
     const [value, setValue] = React.useState('admin');
     const [template,setTemplate] = useState(dataOne)
-    //console.log(TEMPLATES[value])
 
 
     const handleChange = (event) => {
+
     if(value=="driver"){
-        console.log(event.target.value)
-        console.log(template)
         setTemplate(TEMPLATES[event.target.value])
     }
     if(value=="employee"){
-        console.log(event.target.value)
-        console.log(template)
         setTemplate(TEMPLATES[event.target.value])
     }
     if(value=="admin"){
-        console.log(event.target.value)
-        console.log(template)
         setTemplate(TEMPLATES[event.target.value])
     }
     if(value=="service"){
-        console.log(event.target.value)
-        console.log(template)
         setTemplate(TEMPLATES[event.target.value])
     }
     if(value=="mt-service"){
-        console.log(event.target.value)
-        console.log(template)
         setTemplate(TEMPLATES[event.target.value])
     }
-        console.log(event.target.value)
-        console.log(template)
-        setValue(event.target.event.target.value);
+    if(value=='custom'){
+        setTemplate(TEMPLATES.admin)
+    }    
+        setValue(event.target.value);
 
     };
     const initialNodes = transform(data);
+    let templateNodes
+    if(value=='custom'){
+        templateNodes = transform(TEMPLATES.admin);
+    }
+    if(value!='custom'){
+        templateNodes = transform(template);
+    }
+
     const [ nodes, setNodes ] = useState(initialNodes);
-    //console.log(nodes)
 
     const handleBoxChecked = (e, ancestors) => {
         const checked = e.currentTarget.checked;
@@ -224,12 +218,17 @@ const NestedCheckbox = ({ data }) => {
                 <FormControlLabel value="admin" control={<Radio />} label="Admin" />
                 <FormControlLabel value="employee" control={<Radio />} label="Employee" />
                 <FormControlLabel value="service" control={<Radio />} label="Service" />
-                <FormControlLabel value="mtService" control={<Radio />} label="MT-Service" />
+                <FormControlLabel value="mt-service" control={<Radio />} label="MT-Service" />
                 <FormControlLabel value="driver" control={<Radio />} label="Driver" />
                 <FormControlLabel value="custom" control={<Radio />} label="Custom" />
               </RadioGroup>
             </FormControl>
+            {value=='custom' &&
             <NestedCheckboxHelper nodes={nodes}  ancestors={[]} onBoxChecked={handleBoxChecked}/>
+            }
+            {value!='custom' &&
+            <NestedCheckboxHelper nodes={templateNodes}  ancestors={[]} onBoxChecked={handleBoxChecked}/>
+            }
         </div>
     );
 }
@@ -266,7 +265,7 @@ const NestedCheckboxHelper = ({ nodes, ancestors, onBoxChecked }) => {
 export function Permissions(props) {
   return (
     <div>
-        <NestedCheckbox data={dataOne} ancestors={[]}/>
+        <NestedCheckbox data={TEMPLATES.service} ancestors={[]}/>
     </div>
   );
 }
