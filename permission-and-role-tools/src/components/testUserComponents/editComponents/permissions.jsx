@@ -3,7 +3,6 @@ import { cloneDeep } from "lodash";
 
 import { SimpleTreeView } from '@mui/x-tree-view/SimpleTreeView';
 import { TreeItem } from '@mui/x-tree-view/TreeItem';
-import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { RadioButtonGroupInput } from 'react-admin';
@@ -18,7 +17,7 @@ import {TEMPLATES} from './permissionTemplates'
 
 
 
-
+//The default permission object(will be replaced with the users current permissions)
 let dataOne = {
     Create:{
         'data_users.${user._id}':{
@@ -160,7 +159,7 @@ const NestedCheckbox = ({ data }) => {
 
 
     const handleChange = (event) => {
-
+//if the selected radio is one of the availible roles or custom
     if(value=="driver"){
         setTemplate(TEMPLATES[event.target.value])
     }

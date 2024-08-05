@@ -1,13 +1,9 @@
 import { 
-    SimpleShowLayout, 
     TextField,
-    Show,
-    useRecordContext,
     TabbedShowLayout,
     Tab,
-    WithRecord,
 } from "react-admin";
-
+//a sub-componant of the Show Componant. It renders the most pertinant properties of the record.
 export const Primary = () => {
     return (
              <TabbedShowLayout.Tab label="Main">

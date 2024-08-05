@@ -2,9 +2,6 @@ import {
     Edit,
     TabbedShowLayout,
     Tab,
-    SimpleForm,
-    TextInput,
-    required
 } from "react-admin";
 
 
@@ -14,7 +11,8 @@ import { Location } from './editComponents/location'
 import { Other } from './editComponents/other'
 import { Permissions } from './editComponents/Permissions'
 
-
+//renders diffrent edit components, with the one containing the primary record information at the top, and below it
+//is a tab page containing a tab for diffrent groups of properties.
 export const UserEditSource = () => (
     <Edit>
         <Primary/>

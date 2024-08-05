@@ -1,11 +1,7 @@
 import { 
-    SimpleShowLayout, 
     TextField,
-    Show,
-    useRecordContext,
     TabbedShowLayout,
     Tab,
-    WithRecord,
 } from "react-admin";
 
 export const Other = () => {

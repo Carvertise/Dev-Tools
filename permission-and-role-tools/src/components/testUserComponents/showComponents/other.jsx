@@ -8,6 +8,7 @@ import {
     WithRecord,
 } from "react-admin";
 
+//Renders the user properties that do not easily fit with the other tabs
 export const Other = () => {
     return (
              <TabbedShowLayout.Tab label="Car Details">

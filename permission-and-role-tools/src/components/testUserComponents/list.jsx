@@ -3,7 +3,7 @@ import {
     Datagrid,
     TextField,
 } from "react-admin";
-
+//lists several specific properties from all of the records in the users's collection
 export const UserListSource = () => (
     <div>
         <List>

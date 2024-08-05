@@ -1,3 +1,5 @@
+//the templates for the permission objects
+
 export const TEMPLATES = {
   "admin":{
     Create:{

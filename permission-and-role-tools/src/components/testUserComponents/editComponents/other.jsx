@@ -8,6 +8,8 @@ import {
     WithRecord,
 } from "react-admin";
 
+//renders the properties of the record athat do not fit easily with the other properties so that they may be edited.
+
 export const Other = () => {
     return (
              <TabbedShowLayout.Tab label="Car Details">

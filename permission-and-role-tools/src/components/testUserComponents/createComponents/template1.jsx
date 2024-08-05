@@ -1,15 +1,6 @@
 import { 
-    SimpleShowLayout, 
-    TextField,
-    Show,
-    useRecordContext,
-    TabbedShowLayout,
-    Tab,
-    WithRecord,
     TextInput,
-    required,
     SimpleForm,
-    SelectArrayInput,
 } from "react-admin";
 
 

@@ -1,14 +1,10 @@
-import { 
-    TabbedShowLayout,
-    Tab,
-} from "react-admin";
-
 import { SimpleTreeView } from '@mui/x-tree-view/SimpleTreeView';
 import { TreeItem } from '@mui/x-tree-view/TreeItem';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
+//Renders a checkbox-tree of the permissions of the user
 export const Permissions = () => {
     return (
                  <SimpleTreeView>

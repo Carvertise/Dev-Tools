@@ -1,16 +1,12 @@
 import { 
-    SimpleShowLayout, 
-    TextField,
-    Show,
-    useRecordContext,
     TabbedShowLayout,
     Tab,
-    WithRecord,
     TextInput,
-    required,
     SimpleForm,
-    SelectArrayInput,
 } from "react-admin";
+
+//Renders the user's properties that are associated with their car's details so they may be edited
+
 
 export const CarDetails = () => {
     return (

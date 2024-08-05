@@ -8,6 +8,7 @@ import {
     WithRecord,
 } from "react-admin";
 
+//Renders the user's properties that are associated with their location
 export const Location = () => {
     return (
              <TabbedShowLayout.Tab label="Car Details">

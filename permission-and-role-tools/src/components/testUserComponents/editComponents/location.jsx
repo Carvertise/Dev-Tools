@@ -12,6 +12,8 @@ import {
     SelectArrayInput,
 } from "react-admin";
 
+//Renders the user's properties that are associated with their location so they may be edited
+
 export const Location = () => {
     return (
              <TabbedShowLayout.Tab label="Location">

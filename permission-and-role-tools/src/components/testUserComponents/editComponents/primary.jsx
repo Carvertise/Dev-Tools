@@ -1,16 +1,13 @@
 import { 
-    SimpleShowLayout, 
-    TextField,
-    Show,
-    useRecordContext,
     TabbedShowLayout,
     Tab,
-    WithRecord,
     TextInput,
     required,
     SimpleForm,
     SelectArrayInput,
 } from "react-admin";
+
+//renders the primary properties of the record in an editible format
 
 export const Primary = () => {
     return (

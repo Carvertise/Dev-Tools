@@ -1,11 +1,8 @@
 import { 
-    SimpleShowLayout, 
-    TextField,
     Show,
     useRecordContext,
     TabbedShowLayout,
     Tab,
-    WithRecord,
 } from "react-admin";
 
 import { SimpleTreeView } from '@mui/x-tree-view/SimpleTreeView';
@@ -20,10 +17,12 @@ import { Location } from './showComponents/location'
 import { Other } from './showComponents/other'
 import { Permissions } from './showComponents/Permissions'
 
-
+//show the individual record
 const UserShowDriver = () => {
     const record = useRecordContext();
+    //if the records role property only contains driver, it renders these properties
     if(record!=null && record.role.includes('driver') && !record.role.includes('employee')){
+        //returns a tabbed page contatining the properties of the record seperated into the diffrent tabs.
     return (
 
         <div>
@@ -53,8 +52,10 @@ const UserShowDriver = () => {
 }
 const UserShowEmployee = () => {
     const record = useRecordContext();
+    //if the record's role property only contains employee, it renders these properties
     if(record!=null && record.role.includes('employee')){
         console.log(record.role);
+        //returns a tabbed page contatining the properties of the record seperated into the diffrent tabs.
     return (
 
         <div>
@@ -84,6 +85,7 @@ const UserShowEmployee = () => {
 }
 
 export const UserShowSource = () => {
+    //returns both role componants, but their logic should mean that only one is actually rendered
     return(
         <Show>
             <UserShowDriver />
